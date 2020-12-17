@@ -1,0 +1,22 @@
+<h1>ben</h1>
+
+{% load static %}
+
+<img src="{% static 'portfolio/22.jpg' %}" >
+
+<a href="{%static 'portfolio/Job Search.pdf'%}">Job Search</a>
+
+{% for project in projects %}
+<br>
+{{project.title}}
+
+<p>
+  <img src=" {{project.image.url}}" alt="" height="100" width="120">
+</p>
+
+{%if project.url%}
+<a href="{{project.url}}">Goto</a>
+
+{%endif%}
+
+{% endfor %}
