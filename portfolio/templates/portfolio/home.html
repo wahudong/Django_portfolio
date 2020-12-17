@@ -1,4 +1,11 @@
+
+{%extends 'portfolio/base.html' %}
+
+{%block content %}
+
 <h1>ben</h1>
+
+<a href="{%url 'blog:all_blogs'%}">All blogs</a>
 
 {% load static %}
 
@@ -20,3 +27,8 @@
 {%endif%}
 
 {% endfor %}
+
+{%endblock%}
+
+
+
