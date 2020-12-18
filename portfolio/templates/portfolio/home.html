@@ -1,34 +1,40 @@
-
-{%extends 'portfolio/base.html' %}
-
-{%block content %}
-
-<h1>ben</h1>
-
-<a href="{%url 'blog:all_blogs'%}">All blogs</a>
+{% extends "portfolio/base.html" %}
 
 {% load static %}
 
-<img src="{% static 'portfolio/22.jpg' %}" >
+{% block content %}
 
-<a href="{%static 'portfolio/Job Search.pdf'%}">Job Search</a>
+<div class="row justify-content-center my-3">
+  <div class="col-4">
+    <img src="{% static 'portfolio/rrc.jpg' %}" class="img-fluid">
+  </div>
+</div>
 
-{% for project in projects %}
-<br>
-{{project.title}}
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h4 id="hometext" >Red River College</h4>
+  </div>
+</div>
 
-<p>
-  <img src=" {{project.image.url}}" alt="" height="100" width="120">
-</p>
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
 
-{%if project.url%}
-<a href="{{project.url}}">Goto</a>
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
 
-{%endif%}
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
 
-{% endfor %}
+  </div>
+  {% endfor %}
+</div>
 
-{%endblock%}
-
-
-
+{% endblock %}
